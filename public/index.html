@@ -31,6 +31,9 @@
         background: #eee;
         cursor: pointer;
       }
+      .body {
+      background-color: rgba(246, 253, 151, 0.918);
+    }
     </style>
   </head>
   <body>
@@ -102,6 +105,9 @@
             ctx.moveTo(x, y)
           }
         }
+        //sendを緑のボタンに、画像を貼り付け
+        //背景に画像を設定する
+        //
 
         function sendDrawingEvent(x, y, control) {
           const message = JSON.stringify({ x, y, control, type: 'paint' })
