@@ -95,6 +95,7 @@
 
         function draw(x, y, dragging) {
           if (dragging) {
+            ctx.color(blur);
             ctx.lineTo(x, y)
             ctx.stroke()
           } else {
