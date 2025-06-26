@@ -128,7 +128,7 @@
       //
 
       function sendDrawingEvent(x, y, control) {
-        const message = JSON.stringify({ x, y, control, type: 'clear-button' })
+        const message = JSON.stringify({ x, y, control, type: 'paint' })
         ws.send(message)
       }
       
