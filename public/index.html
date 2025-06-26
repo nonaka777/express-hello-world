@@ -9,13 +9,20 @@
         display: flex;
         flex-direction: column;
         height: 80vh;
+        background-color: rgba(246, 253, 151, 0.918);
       }
-      .messages {
+      .messages li {
         flex: 1;
         overflow-y: auto;
         list-style: none;
         padding: 0;
         margin: 0;
+      }
+      .messages li.mine {
+        text-align: right;
+      }
+      .messages li.other {
+        text-align: left;
       }
       .form {
         display: flex;
@@ -28,12 +35,10 @@
       .submit {
         padding: 10px;
         border: 1px solid #ccc;
-        background: #eee;
+        background: green;
         cursor: pointer;
       }
-      .body {
-      background-color: rgba(246, 253, 151, 0.918);
-    }
+      
     </style>
   </head>
   <body>
@@ -135,10 +140,13 @@
             const li = document.createElement('li')
             if (id === myId) {
               li.textContent = `(${id})自分:` + text
+              li.classList.add('mine')
             } else {
               li.textContent = id + ': ' + text
+              li.classList.add('other')
             }
             messageList.appendChild(li)
+            
           }
         }
 
