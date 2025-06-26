@@ -45,10 +45,20 @@
       background: green;
       cursor: pointer;
     }
+    .clear-button {
+  margin: 10px;
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   </style>
 </head>
 
 <body>
+   <button class="clear-button">キャンバスをクリア</button>
   <div class="chat">
     <ul class="messages"></ul>
     <form class="form">
@@ -170,7 +180,7 @@
       const clear = document.querySelector('.clear-button')
       clear.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-      });
+      })
     }
 
     main()
