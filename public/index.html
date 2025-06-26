@@ -58,7 +58,7 @@
 </head>
 
 <body>
-   //<button class="background">色変更</button>
+   
   <div class="chat">
     <ul class="messages"></ul>
     <form class="form">
@@ -186,7 +186,7 @@
       const clear = document.querySelector('.clear-button')
       clear.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const message = JSON.stringify({ type: 'clear' })
+        const message = JSON.stringify({clear, type: 'clear' })
         ws.send(message)
       })
     }
