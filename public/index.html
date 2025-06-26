@@ -58,7 +58,7 @@
 </head>
 
 <body>
-   <button class="clear-button">キャンバスをクリア</button>
+   //<button class="background">色変更</button>
   <div class="chat">
     <ul class="messages"></ul>
     <form class="form">
@@ -66,6 +66,7 @@
       <button class="submit">Send</button>
     </form>
   </div>
+  <button class="clear-button">キャンバスをクリア</button>
   <canvas id="canvas" width="600" height="600" style="border: solid 1px black"></canvas>
 
   <script>
@@ -127,9 +128,10 @@
       //
 
       function sendDrawingEvent(x, y, control) {
-        const message = JSON.stringify({ x, y, control, type: 'paint' })
+        const message = JSON.stringify({ x, y, control, type: 'clear-button' })
         ws.send(message)
       }
+      
 
       ws.onmessage = (event) => {
         const msg = JSON.parse(event.data)
@@ -146,6 +148,7 @@
             mouseout()
           }
         }
+        
         if (msg.type === 'chat') {
           const { id, text } = msg
           const messageList = document.querySelector('.messages')
@@ -159,6 +162,9 @@
           }
           messageList.appendChild(li)
 
+        }
+        if(msg.type=='clear'){
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
       }
 
@@ -180,6 +186,8 @@
       const clear = document.querySelector('.clear-button')
       clear.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const message = JSON.stringify({ type: 'clear' })
+        ws.send(message)
       })
     }
 
